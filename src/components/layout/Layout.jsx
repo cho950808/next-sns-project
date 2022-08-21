@@ -1,5 +1,6 @@
-import Footer from './Footer';
-import Header from './Header';
+import { useState } from "react";
+import Footer from "./Footer";
+import Header from "./Header";
 
 function Layout({ children }) {
   return (
