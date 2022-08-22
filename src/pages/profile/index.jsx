@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Avatar, Button, Card } from "antd";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../reducers";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+
+  const onLogOut = useCallback(() => {
+    dispatch(logoutAction());
+  }, []);
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Card
@@ -21,7 +29,7 @@ const Profile = () => {
         ]}
       >
         <Card.Meta avatar={<Avatar>AC</Avatar>} title="test" />
-        <Button>로그아웃</Button>
+        <Button onClick={onLogOut}>로그아웃</Button>
       </Card>
     </div>
   );
