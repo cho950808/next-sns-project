@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { Form, Input, Button } from "antd";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { loginAction } from "../reducers";
+import { loginAction } from "../reducers/user";
 
 import Profile from "../profile";
 
@@ -11,9 +11,7 @@ const Login = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-
-  console.log(isLoggedIn);
+  const { isLoggedIn } = useSelector((state) => state.user);
 
   const onChangeId = useCallback((e) => {
     setId(e.target.value);
