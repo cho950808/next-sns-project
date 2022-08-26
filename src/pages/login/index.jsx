@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../reducers/user";
 
 import Profile from "../profile";
+import Router from "next/router";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Login = () => {
   const onSubmitForm = useCallback(() => {
     console.log(id, password);
     dispatch(loginAction({ id, password }));
+    Router.push("/");
   }, [id, password]);
 
   return (
