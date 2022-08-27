@@ -27,7 +27,7 @@ export const initialState = {
           User: {
             nickname: "pack2",
           },
-          content: "댓글임2",
+          content: "댓글임2111",
         },
       ],
     },

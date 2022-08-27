@@ -5,7 +5,7 @@ const CommentForm = ({ post }) => {
   const [commentText, setCommentText] = useState("");
 
   const onSubmitComment = useCallback(() => {
-    console.log(commentText);
+    console.log(post.id, commentText);
   }, [commentText]);
 
   const onChangeCommentText = useCallback((e) => {
@@ -21,7 +21,7 @@ const CommentForm = ({ post }) => {
           onChange={onChangeCommentText}
         />
         <Button
-          style={{ position: "absolute", right: 0, bottom: -40 }}
+          style={{ zIndex: 1, position: "absolute", right: 0, bottom: -40 }}
           type="primary"
           htmlType="submit"
         >
