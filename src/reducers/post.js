@@ -33,15 +33,32 @@ export const initialState = {
     },
   ],
   imagePaths: [],
-  postAdded: false,
+  addPostLoading: false,
+  addPostDone: false,
+  addPostError: null,
+  removePostLoading: false,
+  removePostDone: false,
+  removePostError: null,
+  addCommentLoading: false,
+  addCommentDone: false,
+  addCommentError: null,
 };
 
 const ADD_POST_REQUEST = "ADD_POST_REQUEST";
 const ADD_POST_SUCCESS = "ADD_POST_SUCCESS";
 const ADD_POST_FAILURE = "ADD_POST_FAILURE";
 
+const ADD_COMMENT_REQUEST = "ADD_COMMENT_REQUEST";
+const ADD_COMMENT_SUCCESS = "ADD_COMMENT_SUCCESS";
+const ADD_COMMENT_FAILURE = "ADD_COMMENT_FAILURE";
+
 export const addPost = (data) => ({
   type: ADD_POST_REQUEST,
+  data,
+});
+
+export const addCommnet = (data) => ({
+  type: ADD_COMMENT_REQUEST,
   data,
 });
 
@@ -61,18 +78,42 @@ const reducer = (state = initialState, action) => {
     case ADD_POST_REQUEST:
       return {
         ...state,
-        postAdded: true,
+        addPostLoading: true,
+        addPostDone: false,
+        addPostError: null,
       };
     case ADD_POST_SUCCESS:
       return {
         ...state,
         mainPosts: [dummyPost, ...state.mainPosts],
-        postAdded: true,
+        addPostLoading: false,
+        addPostDone: true,
       };
     case ADD_POST_FAILURE:
       return {
         ...state,
-        postAdded: false,
+        addPostLoading: false,
+        addPostError: action.error,
+      };
+    case ADD_COMMENT_REQUEST:
+      return {
+        ...state,
+        addCommentLoading: true,
+        addCommentDone: false,
+        addCommentError: null,
+      };
+    case ADD_COMMENT_SUCCESS:
+      return {
+        ...state,
+        mainPosts: [dummyPost, ...state.mainPosts],
+        addCommentLoading: false,
+        addCommentDone: true,
+      };
+    case ADD_COMMENT_FAILURE:
+      return {
+        ...state,
+        addCommentLoading: false,
+        addCommnetError: action.error,
       };
     default:
       return state;
