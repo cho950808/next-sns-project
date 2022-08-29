@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next -p 3060",
+    "dev": "next -p 3050",
     "build": "next build",
     "start": "next start"
   },

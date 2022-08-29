@@ -12,19 +12,14 @@ import {
 function* addPost(action) {
   try {
     yield delay(1000);
-    const id = shortId.generate();
     yield put({
       type: ADD_POST_SUCCESS,
-      data: {
-        id,
-        content: action.data,
-      },
     });
   } catch (err) {
     console.error(err);
     yield put({
       type: ADD_POST_FAILURE,
-      error: err.response.data,
+      data: err.response.data,
     });
   }
 }
@@ -32,19 +27,13 @@ function* addPost(action) {
 function* addComment(action) {
   try {
     yield delay(1000);
-    const id = shortId.generate();
     yield put({
       type: ADD_COMMENT_SUCCESS,
-      data: {
-        id,
-        content: action.data,
-      },
     });
   } catch (err) {
-    console.error(err);
     yield put({
       type: ADD_COMMENT_FAILURE,
-      error: err.response.data,
+      data: err.response.data,
     });
   }
 }
