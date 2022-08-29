@@ -2,13 +2,14 @@ import React, { useCallback, useState } from "react";
 import { Form, Input, Button } from "antd";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { loginAction } from "../reducers/user";
+import { loginRequestAction } from "../../reducers/user";
 
 import Profile from "../profile";
 import Router from "next/router";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const { isLoggingIn } = useSelector((state) => state.user);
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +25,7 @@ const Login = () => {
 
   const onSubmitForm = useCallback(() => {
     console.log(id, password);
-    dispatch(loginAction({ id, password }));
+    dispatch(loginRequestAction({ id, password }));
     Router.push("/");
   }, [id, password]);
 
@@ -51,7 +52,7 @@ const Login = () => {
           </div>
 
           <div className="mt-3">
-            <Button type="primary" htmlType="submit" loading={false}>
+            <Button type="primary" htmlType="submit" loading={isLoggingIn}>
               로그인
             </Button>
 
