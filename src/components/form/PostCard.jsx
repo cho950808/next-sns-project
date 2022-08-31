@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Card, Button, Avatar, Popover, List, Comment } from "antd";
 import {
   RetweetOutlined,
@@ -16,10 +16,11 @@ import FollowButton from "../button/FollowButton";
 import PostCardContent from "./PostCardContent";
 
 const PostCard = ({ post }) => {
+  console.log(post);
+  const { me } = useSelector((state) => state.user);
+  const id = me && me.id;
+
   const [commentFormOpened, setCommentFormOpened] = useState(false);
-
-  const id = useSelector((state) => state.user.me?.id);
-
   const [liked, setLiked] = useState(false);
 
   const onToggleLike = useCallback(() => {
@@ -30,10 +31,17 @@ const PostCard = ({ post }) => {
     setCommentFormOpened((prev) => !prev);
   }, []);
 
+  useEffect(() => {
+    // 이거는 에러! console.log(image[0])
+    if (post.Images && post.Images.length > 0) {
+      console.log(post.images);
+    }
+  }, [post.Images]);
+
   return (
     <div key={post.id}>
       <Card
-        cover={post.Images[0] && <PostImages images={post.Images} />}
+        cover={post.Images && <PostImages images={post.Images} />}
         actions={[
           <RetweetOutlined key="retweet" />,
           liked ? (

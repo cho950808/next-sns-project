@@ -48,7 +48,7 @@ const PostForm = () => {
           htmlType="submit"
           loading={addPostLoading}
         >
-          짹짹
+          답글
         </Button>
       </div>
       <div>
