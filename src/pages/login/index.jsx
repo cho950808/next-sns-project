@@ -15,13 +15,13 @@ const Login = () => {
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
 
-  const onSubmitForm = useCallback(() => {
+  const onSubmitForm = useCallback(async () => {
     console.log(email, password);
     dispatch({
       type: LOG_IN_REQUEST,
       data: { email, password },
     });
-    Router.push("/");
+    await Router.push("/");
   }, [email, password]);
 
   return (

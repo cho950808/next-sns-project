@@ -1,8 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import Router from "next/router";
+import React, { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { LOG_OUT_REQUEST } from "../../reducers/user";
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const { me } = useSelector((state: any) => state.user);
+
+  const onLogout = useCallback(() => {
+    dispatch({
+      type: LOG_OUT_REQUEST,
+    });
+    Router.push("/login");
+  }, []);
+
   return (
     <div className="fixed z-50 bg-white w-full drop-shadow-md">
       <div className="container">
@@ -20,7 +34,13 @@ export default function Header() {
           </div>
           <div className="header-menu-wrap hidden lg:block space-x-5">
             <Link href="/about">About</Link>
-            <Link href="/login">Login</Link>
+            {!me ? (
+              <Link href="/login">Login</Link>
+            ) : (
+              <button className="text-blue-400" onClick={onLogout}>
+                LogOut
+              </button>
+            )}
           </div>
         </div>
       </div>

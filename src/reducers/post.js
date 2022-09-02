@@ -1,3 +1,6 @@
+import shortId from "shortid";
+// import faker from "faker";
+
 export const initialState = {
   mainPosts: [
     {
@@ -67,7 +70,7 @@ export const addCommnet = (data) => ({
 });
 
 const dummyPost = (data) => ({
-  id: 2,
+  id: shortId.generate(),
   content: data,
   User: {
     id: 1,
@@ -75,6 +78,15 @@ const dummyPost = (data) => ({
   },
   Image: [],
   Comments: [],
+});
+
+const dummyComment = (data) => ({
+  id: shortId.generate(),
+  content: data,
+  User: {
+    id: 1,
+    nickname: "jaeYoung",
+  },
 });
 
 const reducer = (state = initialState, action) => {
@@ -106,13 +118,21 @@ const reducer = (state = initialState, action) => {
         addCommentDone: false,
         addCommentError: null,
       };
-    case ADD_COMMENT_SUCCESS:
+    case ADD_COMMENT_SUCCESS: {
+      const postIndex = state.mainPosts.findIndex(
+        (v) => v.id === action.data.postId
+      );
+      const post = { ...state.mainPosts[postIndex] };
+      post.Comments = [dummyComment(action.data.content), ...post.Comments];
+      const mainPosts = [...state.mainPosts];
+      mainPosts[postIndex] = post;
       return {
         ...state,
-        mainPosts: [dummyPost, ...state.mainPosts],
+        mainPosts,
         addCommentLoading: false,
         addCommentDone: true,
       };
+    }
     case ADD_COMMENT_FAILURE:
       return {
         ...state,

@@ -29,6 +29,7 @@ const PostForm = () => {
 
   return (
     <Form
+      className="flex flex-col w-[500px]"
       style={{ margin: "10px 0 20px" }}
       encType="multipart/form-data"
       onFinish={onSubmit}
