@@ -12,22 +12,29 @@ export const initialState = {
       content: "첫 번째 게시글",
       Images: [
         {
+          id: shortId.generate(),
           src: "https://photo.coolenjoy.co.kr/data/editor/1908/Bimg_fbeae84af08bbd7de189375fbdf82983_xmol.png",
         },
         {
+          id: shortId.generate(),
           src: "https://photo.coolenjoy.co.kr/data/editor/1908/Bimg_fbeae84af08bbd7de189375fbdf82983_lczc.png",
         },
         {
+          id: shortId.generate(),
           src: "https://photo.coolenjoy.co.kr/data/editor/1908/Bimg_fbeae84af08bbd7de189375fbdf82983_09l4.png",
         },
       ],
       Comments: [
         {
+          id: shortId.generate(),
           User: {
+            id: shortId.generate(),
             nickname: "pack1",
           },
           content: "댓글임",
+          id: shortId.generate(),
           User: {
+            id: shortId.generate(),
             nickname: "pack2",
           },
           content: "댓글임2111",
