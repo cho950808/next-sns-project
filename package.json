@@ -10,6 +10,7 @@
     "antd": "^4.22.6",
     "axios": "^0.27.2",
     "faker": "^6.6.6",
+    "immer": "^9.0.15",
     "next": "latest",
     "next-redux-wrapper": "^7.0.5",
     "prop-types": "^15.8.1",

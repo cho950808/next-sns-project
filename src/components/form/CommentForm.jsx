@@ -38,7 +38,7 @@ const CommentForm = ({ post }) => {
           style={{ zIndex: 1, position: "absolute", right: 0, bottom: -40 }}
           type="primary"
           htmlType="submit"
-          loading={addCommentLoading}
+          // loading={addCommentLoading}
         >
           작성
         </Button>
