@@ -6,6 +6,8 @@
 /.pnp
 .pnp.js
 
+# back 
+*config.json
 *package-lock.json
 
 # testing

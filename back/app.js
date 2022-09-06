@@ -1,16 +1,31 @@
-const http = require("http");
-const server = http.createServer((req, res) => {
-  console.log(req.url, req.method);
-  res.end("hello node");
+const express = require("express");
+const postRouter = require("./routes/post");
 
-  if(req.method === 'GET') {
-    if(req.url = )
-  } else if (req.method === 'POST') {
+const app = express();
 
-  } else if (req.method === 'DELETE') {
-
-  }
+app.get("/", (req, res) => {
+  res.send("hello express");
 });
-server.listen(3050, () => {
- console.log('서버 실행 중') 
+
+app.get("/", (req, res) => {
+  res.json([
+    {
+      id: 1,
+      content: "hello",
+    },
+    {
+      id: 2,
+      content: "hello2",
+    },
+    {
+      id: 3,
+      content: "hello3",
+    },
+  ]);
+});
+
+app.use("/post", postRouter);
+
+app.listen(3050, () => {
+  console.log("서버 실행 중");
 });
