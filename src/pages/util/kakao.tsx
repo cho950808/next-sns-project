@@ -3,7 +3,7 @@ export const kakaoInit = () => {
     const kakao = (window as any).Kakao;
 
     if (!kakao.isInitialized()) {
-      kakao.init(process.env.NEXT_PUBLIC_KAKAO_LOGIN_URL);
+      kakao.init("5c700cd25b0aa458cdabdf52a889dd0e");
     }
     return kakao;
   }
