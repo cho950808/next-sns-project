@@ -26,27 +26,27 @@ const Login = () => {
     await Router.push("/");
   }, [email, password]);
 
-  const kakaoLogin = async () => {
-    const kakao = kakaoInit();
+  // const kakaoLogin = async () => {
+  //   const kakao = kakaoInit();
 
-    kakao.Auth.login({
-      success: () => {
-        kakao.API.request({
-          url: "/v2/user/me",
-          success: (res) => {
-            console.log(res);
-            Router.push("/kakao");
-          },
-          fail: (error) => {
-            console.log(error);
-          },
-        });
-      },
-      fail: (error) => {
-        console.log(error);
-      },
-    });
-  };
+  //   kakao.Auth.login({
+  //     success: () => {
+  //       kakao.API.request({
+  //         url: "/v2/user/me",
+  //         success: (res) => {
+  //           console.log(res);
+  //           Router.push("/kakao");
+  //         },
+  //         fail: (error) => {
+  //           console.log(error);
+  //         },
+  //       });
+  //     },
+  //     fail: (error) => {
+  //       console.log(error);
+  //     },
+  //   });
+  // };
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
@@ -89,9 +89,9 @@ const Login = () => {
               </Link>
             </div>
           </Form>
-          <Button className="mt-20" type="primary" onClick={kakaoLogin}>
+          {/* <Button className="mt-20" type="primary" onClick={kakaoLogin}>
             카카오 로그인
-          </Button>
+          </Button> */}
         </>
       ) : (
         <Profile />
