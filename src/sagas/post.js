@@ -1,5 +1,5 @@
 import axios from "axios";
-import shortId from "shortId";
+import shortId from "shortid";
 import { all, fork, takeLatest, put, delay } from "redux-saga/effects";
 import {
   ADD_POST_FAILURE,
