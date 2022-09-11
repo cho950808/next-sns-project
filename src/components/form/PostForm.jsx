@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Form, Input, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import { backUrl } from "../../config/config";
 
 import Profile from "../../pages/profile";
 import useInput from "../hooks/useInput";
@@ -62,7 +63,7 @@ const PostForm = () => {
             return (
               <div key={v} style={{ display: "inline-block" }}>
                 <img
-                  src={"http://localhost:3065/" + v}
+                  src={`${backUrl}` + v}
                   style={{ width: "200px" }}
                   alt={v}
                 />
