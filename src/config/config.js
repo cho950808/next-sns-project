@@ -1,1 +1,1 @@
-export const baskUrl = "http://3.36.91.40";
+export const backUrl = "http://3.36.91.40";
